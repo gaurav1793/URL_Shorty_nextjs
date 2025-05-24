@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/mongoose": "^5.11.97",
+    "@types/shortid": "^2.2.0",
     "daisyui": "^5.0.37",
     "mongoose": "^8.15.0",
     "next": "15.1.8",

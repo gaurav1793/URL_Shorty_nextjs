@@ -21,3 +21,4 @@ export interface Iurl extends Document{
 
 const Url:Model<Iurl> = models.Url || model<Iurl>('Url',urlSchema);
 
+export default Url
