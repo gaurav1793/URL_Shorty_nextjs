@@ -13,7 +13,8 @@ const fetchUrl=cache(async()=>{
 export async function GET() {
    const urls= await fetchUrl();
    const response= NextResponse.json({urls})
-   response.headers.set('cache-control','public, max-age=60 s-maxage=60,stale-while-revalidation=59');
+   response.headers.set('Cache-Control',
+  'public, max-age=180, s-maxage=180, stale-while-revalidate=59');
    console.log("hello from urls route",response);
    return response;
 }
