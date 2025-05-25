@@ -1,5 +1,9 @@
+import Link from "next/link";
+
 async function fetchUrls() {
-    const response= await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/urls`);
+    const response= await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/urls`, {
+        cache: 'force-cache'
+    });
     if(!response.ok){
         throw  new Error('faled to fetch urls');
     }
@@ -12,7 +16,6 @@ export default async function UrlList() {
     let urls;
     try {
         urls= await fetchUrls();
-        console.log(urls);
     } catch (error) {
         return (
             <div className="min-h-screen bg-gray-100 flex justify-center items-center">
@@ -27,6 +30,7 @@ export default async function UrlList() {
         <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
             <div className="p-10 bg-white rounded-lg shadow-2xl max-w-4xl w-full">
                 <h1 className="text-3xl font-bold  mb-6 text-center text-gray-700">All Short URLs</h1>
+                <Link href="/" className="text-gray-800 font-bold hover:text-blue-500"> Go To Home</Link>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra w-full">
                         <thead>
@@ -51,6 +55,7 @@ export default async function UrlList() {
                                         className="link link-primary"
                                     >{`${process.env.NEXT_PUBLIC_BASE_URL}/${url.shortUrl}`}</a>
                                 </td>
+                                
                                </tr>
                             })
                             }
